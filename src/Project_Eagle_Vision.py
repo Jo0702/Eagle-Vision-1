@@ -98,13 +98,14 @@ def predict(
 
 
 if __name__ == '__main__':
-    model = load_model()
-    index_to_class_label_dict = load_index_to_label_dict()
-    all_image_files = load_s3_file_structure()
+    model = load_model()    #加载模型
+    index_to_class_label_dict = load_index_to_label_dict() #加载标签
+    all_image_files = load_s3_file_structure() # 加载图片库
     types_of_birds = sorted(list(all_image_files['test'].keys()))
     types_of_birds = [bird.title() for bird in types_of_birds]
 
-    st.title('Welcome To Project Eagle Vision!')
+    
+    st.title('Welcome To Project Eagle Vision!') #网页上的文本
     instructions = """
         Either upload your own image or select from
         the sidebar to get a preconfigured image.
@@ -114,16 +115,16 @@ if __name__ == '__main__':
         """
     st.write(instructions)
 
-    file = st.file_uploader('Upload An Image')
+    file = st.file_uploader('Upload An Image') #加载图片
     dtype_file_structure_mapping = {
         'All Images': 'consolidated',
         'Images Used To Train The Model': 'train',
         'Images Used To Tune The Model': 'valid',
         'Images The Model Has Never Seen': 'test'
-    }
+    }  #表格
     data_split_names = list(dtype_file_structure_mapping.keys())
 
-    if file:  # if user uploaded file
+    if file:  # if user uploaded file 如果上传了图片 就会在网页上显示自己上传的网页并且显示图片的分类结果、在图片库内寻找三张同类型的图片显示出来
         img = Image.open(file)
         prediction = predict(img, index_to_class_label_dict, model, k=5)
         top_prediction = prediction[0][0]
@@ -137,7 +138,7 @@ if __name__ == '__main__':
             files_to_get_from_s3.append(path)
         images_from_s3 = load_files_from_s3(keys=files_to_get_from_s3)
 
-    else:
+    else: #如果不上传图片 使用默认图片的分类结果
         dataset_type = st.sidebar.selectbox(
             "Data Portion Type", data_split_names)
         image_files_subset = dtype_file_structure_mapping[dataset_type]
