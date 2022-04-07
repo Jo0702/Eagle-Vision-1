@@ -110,7 +110,7 @@ if __name__ == '__main__':
         the sidebar to get a preconfigured image.
         The image you select or upload will be fed
         through the Deep Neural Network in real-time
-        and the output will be displayed to the screen.
+        and the output will be displayed to the screen.(chadoc0101)
         """
     st.write(instructions)
 
