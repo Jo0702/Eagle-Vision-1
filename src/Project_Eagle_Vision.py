@@ -8,8 +8,8 @@
 # from botocore.client import Config  # contact public s3 buckets anonymously
 
 import streamlit as st
-import pandas as pd
-import numpy as np
+# import pandas as pd
+# import numpy as np
 
 # from resnet_model import ResnetModel
 
