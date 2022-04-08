@@ -116,9 +116,9 @@ if __name__ == '__main__':
         and the output will be displayed to the screen.(LXX_Jo)
         """
     st.write(instructions)
-    st.subheader('现在请您输入一张图片 或 拍一张照片：')
+    st.subheader(':information_desk_person:现在请您选择一张图片：')
 
-    file = st.file_uploader('Upload An Image') #加载图片
+    file = st.file_uploader('图片加载处') #加载图片
     dtype_file_structure_mapping = {
         'All Images': 'consolidated',
         'Images Used To Train The Model': 'train',
