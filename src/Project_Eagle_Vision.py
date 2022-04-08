@@ -116,7 +116,7 @@ if __name__ == '__main__':
         and the output will be displayed to the screen.(LXX_Jo)
         """
     st.write(instructions)
-    st.markdown('现在请您输入一张图片 或 拍一张照片：')
+    st.subheader('现在请您输入一张图片 或 拍一张照片：')
 
     file = st.file_uploader('Upload An Image') #加载图片
     dtype_file_structure_mapping = {
