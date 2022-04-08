@@ -167,22 +167,22 @@ if __name__ == '__main__':
 #         img = images_from_s3.pop(0)
 #         prediction = predict(img, index_to_class_label_dict, model, 5)
 
-#     st.title("Here is the image you've selected")
-#     resized_image = img.resize((336, 336))
-#     st.image(resized_image)
-#     st.title("Here are the five most likely bird species")
-#     df = pd.DataFrame(data=np.zeros((5, 2)),
-#                       columns=['Species', 'Confidence Level'],
-#                       index=np.linspace(1, 5, 5, dtype=int))
+    st.title("Here is the image you've selected")
+    resized_image = img.resize((336, 336))
+    st.image(resized_image)
+    st.title("Here are the five most likely bird species")
+    df = pd.DataFrame(data=np.zeros((5, 2)),
+                      columns=['Species', 'Confidence Level'],
+                      index=np.linspace(1, 5, 5, dtype=int))
 
-#     for idx, p in enumerate(prediction):
-#         link = 'https://en.wikipedia.org/wiki/' + \
-#             p[0].lower().replace(' ', '_')
-#         df.iloc[idx,
-#                 0] = f'<a href="{link}" target="_blank">{p[0].title()}</a>'
-#         df.iloc[idx, 1] = p[1]
-#     st.write(df.to_html(escape=False), unsafe_allow_html=True)
-#     st.title(f"Here are three other images of the {prediction[0][0]}")
+    for idx, p in enumerate(prediction):
+        link = 'https://en.wikipedia.org/wiki/' + \
+            p[0].lower().replace(' ', '_')
+        df.iloc[idx,
+                0] = f'<a href="{link}" target="_blank">{p[0].title()}</a>'
+        df.iloc[idx, 1] = p[1]
+    st.write(df.to_html(escape=False), unsafe_allow_html=True)
+    st.title(f"Here are three other images of the {prediction[0][0]}")
 
-#     st.image(images_from_s3)
-#     # st.title('How it works:')
+    st.image(images_from_s3)
+    # st.title('How it works:')
