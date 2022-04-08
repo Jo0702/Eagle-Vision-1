@@ -170,19 +170,20 @@ if __name__ == '__main__':
     st.title(":point_down:Here is the image you've selected")
     resized_image = img.resize((336, 336))
     st.image(resized_image)
-    st.title("Here are the five most likely bird species")
+    st.title(":balloon:Result:")
+    st.caption("Here are the five most likely bird species")
     df = pd.DataFrame(data=np.zeros((5, 2)),
-                      columns=['Species', 'Confidence Level'],
+                      columns=['预测鸟种', '置信度'],
                       index=np.linspace(1, 5, 5, dtype=int))
 
-#     for idx, p in enumerate(prediction):
-#         link = 'https://en.wikipedia.org/wiki/' + \
-#             p[0].lower().replace(' ', '_')
-#         df.iloc[idx,
-#                 0] = f'<a href="{link}" target="_blank">{p[0].title()}</a>'
-#         df.iloc[idx, 1] = p[1]
+    for idx, p in enumerate(prediction):
+        link = 'https://en.wikipedia.org/wiki/' + \
+            p[0].lower().replace(' ', '_')
+        df.iloc[idx,
+                0] = f'<a href="{link}" target="_blank">{p[0].title()}</a>'
+        df.iloc[idx, 1] = p[1]
     st.write(df.to_html(escape=False), unsafe_allow_html=True)
-    st.title(f"Some other images of the {prediction[0][0]}")
+    st.title(":cookie:PLUS:\nSome other images of the {prediction[0][0]}")
 
     st.image(images_from_s3)
     # st.title('How it works:')
