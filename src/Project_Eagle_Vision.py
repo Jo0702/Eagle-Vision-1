@@ -39,7 +39,7 @@ def load_index_to_label_dict(
     return index_to_class_label_dict
 
 
-def load_files_from_s3(
+def load_files_from_s3( 
         keys: list,
         bucket_name: str = 'bird-classification-bucket'
         ) -> list:
@@ -134,40 +134,40 @@ if __name__ == '__main__':
         top_prediction = prediction[0][0]
         available_images = all_image_files.get(
             'train').get(top_prediction.upper())
-#         examples_of_species = np.random.choice(available_images, size=3)
-#         files_to_get_from_s3 = []
+        examples_of_species = np.random.choice(available_images, size=3)
+        files_to_get_from_s3 = []
 
-#         for im_name in examples_of_species:
-#             path = os.path.join('train', top_prediction.upper(), im_name)
-#             files_to_get_from_s3.append(path)
-#         images_from_s3 = load_files_from_s3(keys=files_to_get_from_s3)
+        for im_name in examples_of_species:
+            path = os.path.join('train', top_prediction.upper(), im_name)
+            files_to_get_from_s3.append(path)
+        images_from_s3 = load_files_from_s3(keys=files_to_get_from_s3)
 
-#     else: #如果不上传图片 使用默认图片的分类结果
-#         dataset_type = st.sidebar.selectbox(
-#             "Data Portion Type", data_split_names)
-#         image_files_subset = dtype_file_structure_mapping[dataset_type]
+    else: #如果不上传图片 使用默认图片的分类结果
+        dataset_type = st.sidebar.selectbox(
+            "Data Portion Type", data_split_names)
+        image_files_subset = dtype_file_structure_mapping[dataset_type]
 
-#         selected_species = st.sidebar.selectbox("Bird Type", types_of_birds)
-#         available_images = load_list_of_images_available(
-#             all_image_files, image_files_subset, selected_species.upper())
-#         image_name = st.sidebar.selectbox("Image Name", available_images)
-#         if image_files_subset == 'consolidated':
-#             s3_key_prefix = 'consolidated/consolidated'
-#         else:
-#             s3_key_prefix = image_files_subset
-#         key_path = os.path.join(
-#             s3_key_prefix, selected_species.upper(), image_name)
-#         files_to_get_from_s3 = [key_path]
-#         examples_of_species = np.random.choice(available_images, size=3)
+        selected_species = st.sidebar.selectbox("Bird Type", types_of_birds)
+        available_images = load_list_of_images_available(
+            all_image_files, image_files_subset, selected_species.upper())
+        image_name = st.sidebar.selectbox("Image Name", available_images)
+        if image_files_subset == 'consolidated':
+            s3_key_prefix = 'consolidated/consolidated'
+        else:
+            s3_key_prefix = image_files_subset
+        key_path = os.path.join(
+            s3_key_prefix, selected_species.upper(), image_name)
+        files_to_get_from_s3 = [key_path]
+        examples_of_species = np.random.choice(available_images, size=3)
 
-#         for im in examples_of_species:
-#             path = os.path.join(s3_key_prefix, selected_species.upper(), im)
-#             files_to_get_from_s3.append(path)
-#         images_from_s3 = load_files_from_s3(keys=files_to_get_from_s3)
-#         img = images_from_s3.pop(0)
-#         prediction = predict(img, index_to_class_label_dict, model, 5)
+        for im in examples_of_species:
+            path = os.path.join(s3_key_prefix, selected_species.upper(), im)
+            files_to_get_from_s3.append(path)
+        images_from_s3 = load_files_from_s3(keys=files_to_get_from_s3)
+        img = images_from_s3.pop(0)
+        prediction = predict(img, index_to_class_label_dict, model, 5)
 
-    st.title("Here is the image you've selected")
+    st.title(":point_down:Here is the image you've selected")
     resized_image = img.resize((336, 336))
     st.image(resized_image)
     st.title("Here are the five most likely bird species")
