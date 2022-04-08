@@ -183,7 +183,8 @@ if __name__ == '__main__':
                 0] = f'<a href="{link}" target="_blank">{p[0].title()}</a>'
         df.iloc[idx, 1] = p[1]
     st.write(df.to_html(escape=False), unsafe_allow_html=True)
-    st.title(":cookie:PLUS:\nSome other images of the {prediction[0][0]}")
-
+    st.title(f":cookie:PLUS:\nSome other images of the {prediction[0][0]}")
+    # 前面的f不能少，不然prediction[0][0]就会原文显示
+    
     st.image(images_from_s3)
     # st.title('How it works:')
