@@ -105,13 +105,16 @@ if __name__ == '__main__':
     types_of_birds = [bird.title() for bird in types_of_birds]
 
     
-    st.title('Welcome To Project Eagle Vision!') #网页上的文本
+    st.title('Welcome To 甄羽!',':+1:') #网页上的文本
     instructions = """
+        为了处理突发性输电线路渉鸟故障，针对性
+        地加装防鸟措施，此APP可识别涉鸟故障危害
+        鸟种，以便为运维人员提供正确识鸟的工具。
         Either upload your own image or select from
         the sidebar to get a preconfigured image.
         The image you select or upload will be fed
         through the Deep Neural Network in real-time
-        and the output will be displayed to the screen.(chadoc0101)
+        and the output will be displayed to the screen.(LXX_Jo)
         """
     st.write(instructions)
 
