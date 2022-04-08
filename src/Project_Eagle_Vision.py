@@ -105,11 +105,10 @@ if __name__ == '__main__':
     types_of_birds = [bird.title() for bird in types_of_birds]
 
     
-    st.title('Welcome To 甄羽!:+1:') #网页上的文本
+    st.title('Welcome To 甄羽!:sunglasses:') #网页上的文本
     instructions = """
-        为了处理突发性输电线路渉鸟故障，针对性
-        地加装防鸟措施，此APP可识别涉鸟故障危害
-        鸟种，以便为运维人员提供正确识鸟的工具。
+        为了处理突发性输电线路渉鸟故障，针对性地加装防鸟措施，:balloon:甄羽可为您识别涉鸟故障
+        危害鸟种，以便为运维人员提供正确识鸟的工具。\n
         Either upload your own image or select from
         the sidebar to get a preconfigured image.
         The image you select or upload will be fed
@@ -117,6 +116,7 @@ if __name__ == '__main__':
         and the output will be displayed to the screen.(LXX_Jo)
         """
     st.write(instructions)
+    st.markdown('现在请您输入一张图片 或 拍一张照片：')
 
     file = st.file_uploader('Upload An Image') #加载图片
     dtype_file_structure_mapping = {
