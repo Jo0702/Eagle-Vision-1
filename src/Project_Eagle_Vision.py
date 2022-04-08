@@ -108,12 +108,12 @@ if __name__ == '__main__':
     st.title('Welcome To 甄羽!:sunglasses:') #网页上的文本
     instructions = """
         为了处理突发性输电线路渉鸟故障，针对性地加装防鸟措施，:balloon:甄羽可为您识别涉鸟故障
-        危害鸟种，以便为运维人员提供正确识鸟的工具。\n
+        危害鸟种，以便为运维人员提供正确识鸟的工具。(LXX_Jo)\n
         Either upload your own image or select from
         the sidebar to get a preconfigured image.
         The image you select or upload will be fed
         through the Deep Neural Network in real-time
-        and the output will be displayed to the screen.(LXX_Jo)
+        and the output will be displayed to the screen.
         """
     st.write(instructions)
     st.subheader(':information_desk_person:现在请您选择一张图片：')
