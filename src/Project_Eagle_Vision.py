@@ -105,7 +105,7 @@ if __name__ == '__main__':
     types_of_birds = [bird.title() for bird in types_of_birds]
 
     
-    st.title('Welcome To 甄羽!',':+1:') #网页上的文本
+    st.title('Welcome To 甄羽!:+1:') #网页上的文本
     instructions = """
         为了处理突发性输电线路渉鸟故障，针对性
         地加装防鸟措施，此APP可识别涉鸟故障危害
